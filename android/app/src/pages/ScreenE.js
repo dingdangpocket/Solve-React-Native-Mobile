@@ -8,11 +8,11 @@ import {
 
 
 const ScreenE = ({ navigation,route}) => {
-    // const {name,id}=route.params   
+    const {name,id}=route.params   
     return (
         
         <View>
-            <Text>E页面</Text>
+            <Text>E页面{id}</Text>
         </View>
     );
 }
