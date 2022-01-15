@@ -1,0 +1,43 @@
+{
+  "name": "solve",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^5.x",
+    "@react-navigation/native": "^5.x",
+    "@react-navigation/stack": "^5.x",
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-native-elements": "^3.4.2",
+    "react-native-gesture-handler": "^2.1.1",
+    "react-native-markdown-display": "^6.1.6",
+    "react-native-markdown-renderer": "^3.2.8",
+    "react-native-reanimated": "^2.2.4",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.1",
+    "react-native-vector-icons": "^9.0.0",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/runtime": "^7.16.7",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "babel-jest": "^27.4.6",
+    "eslint": "^8.6.0",
+    "jest": "^27.4.7",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
