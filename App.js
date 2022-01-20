@@ -4,6 +4,7 @@ import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'; //引入
 import TabScreenA from './android/app/src/pages/TabScreenA'; //引入
 import TabScreenB from './android/app/src/pages/TabScreenB'; //引入
+import TabScreenC from './android/app/src/pages/TabScreenC'; //引入
 import ScreenG from './android/app/src/pages/ScreenG'; //引入
 import ScreenE from './android/app/src/pages/ScreenE'; //引入
 import {createStackNavigator} from '@react-navigation/stack'; //引入
@@ -12,34 +13,46 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 function HomeTabs() {
   return (
+
     <Tab.Navigator
-      tabBarOptions={{activeTintColor: 'black', inactiveTintColor: 'gray'}}
+      tabBarOptions={{activeTintColor: '#972F97', inactiveTintColor: 'gray'}}
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, size, color}) => {
           let icon;
           if (route.name === '首页') {
-            console.log('?', icon);
             icon = focused ? (
               <Image
-                source={require('./android/app/src/static/addnote.png')}
-                style={{width: 30, height: 30}}
+                source={require('./android/app/src/static/key1.png')}
+                style={{width: 29, height: 25}}
               />
             ) : (
               <Image
-                source={require('./android/app/src/static/addnote.png')}
-                style={{width: 25, height: 25}}
+                source={require('./android/app/src/static/key0.png')}
+                style={{width: 27.5, height: 25}}
               />
             );
           } else if (route.name === '我的') {
             icon = focused ? (
               <Image
-                source={require('./android/app/src/static/addnote.png')}
-                style={{width: 30, height: 30}}
+                source={require('./android/app/src/static/my1.png')}
+                style={{width: 31, height: 25}}
               />
             ) : (
               <Image
-                source={require('./android/app/src/static/addnote.png')}
-                style={{width: 25, height: 25}}
+                source={require('./android/app/src/static/my0.png')}
+                style={{width: 29, height: 25}}
+              />
+            );
+          }else if (route.name ==" ") {
+            icon = focused ? (
+              <Image
+                source={require('./android/app/src/static/addfill2.png')}
+                style={styles.add}
+              />
+            ) : (
+              <Image
+                source={require('./android/app/src/static/addfill2.png')}
+                style={styles.add}
               />
             );
           }
@@ -47,8 +60,10 @@ function HomeTabs() {
         },
       })}>
       <Tab.Screen name="首页" component={TabScreenA} />
+      <Tab.Screen name=" " component={TabScreenC} />
       <Tab.Screen name="我的" component={TabScreenB} />
     </Tab.Navigator>
+
   );
 }
 import {Provider} from 'react-redux';
@@ -70,5 +85,10 @@ const App = () => {
     </Provider>
   );
 };
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  add:{
+    width: 50,
+    height: 50,
+  }
+});
 export default App;
