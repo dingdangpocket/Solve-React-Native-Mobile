@@ -13,7 +13,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 function HomeTabs() {
   return (
-
     <Tab.Navigator
       tabBarOptions={{activeTintColor: '#972F97', inactiveTintColor: 'gray'}}
       screenOptions={({route}) => ({
@@ -66,6 +65,7 @@ function HomeTabs() {
 
   );
 }
+
 import {Provider} from 'react-redux';
 import {Store} from './android/app/src/redux/store';
 const App = () => {

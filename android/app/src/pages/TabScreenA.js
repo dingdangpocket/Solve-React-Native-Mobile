@@ -5,6 +5,7 @@ import {
   Button,
   StyleSheet,
   TextInput,
+  Image,
   ScrollView,
   Dimensions,
   TouchableOpacity,
@@ -13,10 +14,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {setName, getData} from '../redux/actions';
 import {createStackNavigator} from '@react-navigation/stack'; //引入
-
+import ContentCard from '../components/ContentCard';
 const Stack = createStackNavigator();
 import Markdown from 'react-native-markdown-renderer';
-import {Tab, TabView} from 'react-native-elements';
 let MainHeight = Dimensions.get('window').height;
 let MainWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
@@ -55,12 +55,15 @@ const styles = StyleSheet.create({
   optionAreaLeft: {
     backgroundColor: 'white',
     height: 60,
-    width: MainWidth * 0.82,
+    width: MainWidth * 0.75,
   },
   optionAreaRight: {
-    backgroundColor: 'yellow',
+    backgroundColor: 'white',
     height: 60,
     width: 60,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   optionBox: {
     height: 60,
@@ -80,7 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // marginStart: 2,
   },
   textDefault: {
     color: 'white',
@@ -89,6 +91,12 @@ const styles = StyleSheet.create({
   textUnActived: {
     color: 'gray',
   },
+  focusListContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  }
 });
 const copy = `
 ## 代码区域
@@ -190,17 +198,93 @@ const ScreenA = ({navigation}) => {
   //选项列表
   //获得选项;
   const [current, setCurrent] = useState(0);
-
-  const [value, setValue] = useState('');
   const get = (optionId) => {
-    console.log('id', optionId);
+    console.log('点击的id', optionId);
     setCurrent(optionId);
   };
+
+  //测试数据;
+  const [cardData, setCardData] = useState([
+    {
+      id: 0,
+      title: 'React性能优化方案',
+      content: '理论内容数据...',
+      recordNum: '1076',
+      solveNum: '786',
+      spotNum: '684',
+      commentNum: '692',
+      publisher: '张海',
+      createTime: '3天前',
+      MainTag: '前端',
+      ProgramingLanguage: 'python',
+      contentType: 'theory',
+    },
+    {
+      id: 1,
+      title: 'Promise.all()使用示例',
+      content: '示例内容数据...',
+      recordNum: '1076',
+      solveNum: '786',
+      spotNum: '684',
+      commentNum: '692',
+      publisher: '张海',
+      createTime: '3天前',
+      MainTag: '前端',
+      ProgramingLanguage: 'python',
+      contentType: 'example',
+    },
+    {
+      id: 2,
+      title: 'Cannot read property blob of undefined?',
+      content: '报错内容数据...',
+      recordNum: '1076',
+      solveNum: '786',
+      spotNum: '684',
+      commentNum: '692',
+      publisher: '张海',
+      createTime: '3天前',
+      MainTag: '前端',
+      ProgramingLanguage: 'python',
+      contentType: 'error',
+    },
+    {
+      id: 3,
+      title: 'Ajax中如何获得数据?',
+      content: '问题数据...',
+      recordNum: '1076',
+      solveNum: '786',
+      spotNum: '684',
+      commentNum: '692',
+      publisher: '张海',
+      createTime: '3天前',
+      MainTag: '前端',
+      ProgramingLanguage: 'python',
+      contentType: 'question',
+    },
+    {
+      id: 4,
+      title: '如何系统学习React-Native?',
+      content: '问题数据...',
+      recordNum: '1076',
+      solveNum: '786',
+      spotNum: '684',
+      commentNum: '692',
+      publisher: '张海',
+      createTime: '3天前',
+      MainTag: '前端',
+      ProgramingLanguage: 'python',
+      contentType: 'question',
+    },
+  ]);
+  //测试数据;
   return (
     <View>
       <ScrollView horizontal={false}>
         <View style={styles.optionArea}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.optionAreaLeft}>
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={styles.optionAreaLeft}>
             {optionList.map((item) => {
               return (
                 <TouchableOpacity
@@ -226,10 +310,23 @@ const ScreenA = ({navigation}) => {
             })}
           </ScrollView>
           <View style={styles.optionAreaRight}>
-            <Text>图标</Text>
+            <Image
+              source={require('../../src/static/search.png')}
+              style={{width: 25, height: 25}}
+            />
           </View>
         </View>
-        {current == 0 ? <Text>关注</Text> : null}
+        {current == 0 ? (
+          <View style={styles.focusListContainer}>
+            {cardData.map((item) => {
+              return (
+                <View key={item.id}>
+                  <ContentCard item={item}></ContentCard>
+                </View>
+              );
+            })}
+          </View>
+        ) : null}
         {current == 1 ? <Text>精选</Text> : null}
         {current == 2 ? <Text>热门</Text> : null}
         {current == 3 ? <Text>示例</Text> : null}
@@ -252,7 +349,7 @@ export default ScreenA;
                   editable={true} //可编辑状态
                 ></TextInput>
                 <Text>tabA</Text>
-                <Text>创作者:杨磊</Text>
+                <Text>杨磊</Text>
                 <Markdown style={styles} mergeStyle={true}>
                   {copy}
                 </Markdown>
