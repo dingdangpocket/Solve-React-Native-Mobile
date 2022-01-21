@@ -91,12 +91,12 @@ const styles = StyleSheet.create({
   textUnActived: {
     color: 'gray',
   },
-  focusListContainer:{
+  focusListContainer: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-  }
+  },
 });
 const copy = `
 ## 代码区域
@@ -163,7 +163,7 @@ export default PictureCom
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 `;
 
-const ScreenA = ({navigation}) => {
+const TabScreenA = ({navigation}) => {
   const [name2, SetName2] = useState('');
   const {name, data} = useSelector((state) => state.userReducer);
   const [index, setIndex] = React.useState(0);
@@ -185,7 +185,20 @@ const ScreenA = ({navigation}) => {
   const go = () => {
     navigation.navigate('Screen_G', {name: '李华', id: '18'});
   };
-
+  const LinkToDesc = (contentType) => {
+    if (contentType == 'theory') {
+      navigation.navigate('TheoryDescScreen');
+    }
+    if (contentType == 'error') {
+      navigation.navigate('ErrorDescScreen');
+    }
+    if (contentType == 'example') {
+      navigation.navigate('ExampleDescScreen');
+    }
+    if (contentType == 'question') {
+      navigation.navigate('QuestionDescScreen');
+    }
+  };
   //选项列表
   const [optionList, setOptionList] = useState([
     {id: 0, content: '关注'},
@@ -227,7 +240,7 @@ const ScreenA = ({navigation}) => {
       solveNum: '786',
       spotNum: '684',
       commentNum: '692',
-      publisher: '张海',
+      publisher: '何新',
       createTime: '3天前',
       MainTag: '前端',
       ProgramingLanguage: 'python',
@@ -241,7 +254,7 @@ const ScreenA = ({navigation}) => {
       solveNum: '786',
       spotNum: '684',
       commentNum: '692',
-      publisher: '张海',
+      publisher: '李斯',
       createTime: '3天前',
       MainTag: '前端',
       ProgramingLanguage: 'python',
@@ -255,7 +268,7 @@ const ScreenA = ({navigation}) => {
       solveNum: '786',
       spotNum: '684',
       commentNum: '692',
-      publisher: '张海',
+      publisher: '陈新',
       createTime: '3天前',
       MainTag: '前端',
       ProgramingLanguage: 'python',
@@ -269,7 +282,7 @@ const ScreenA = ({navigation}) => {
       solveNum: '786',
       spotNum: '684',
       commentNum: '692',
-      publisher: '张海',
+      publisher: '李飞',
       createTime: '3天前',
       MainTag: '前端',
       ProgramingLanguage: 'python',
@@ -288,6 +301,7 @@ const ScreenA = ({navigation}) => {
             {optionList.map((item) => {
               return (
                 <TouchableOpacity
+                  key={item.id}
                   activeOpacity={0.8}
                   onPress={() => get(item.id)}>
                   <View
@@ -320,9 +334,14 @@ const ScreenA = ({navigation}) => {
           <View style={styles.focusListContainer}>
             {cardData.map((item) => {
               return (
-                <View key={item.id}>
-                  <ContentCard item={item}></ContentCard>
-                </View>
+                <TouchableOpacity
+                  activeOpacity={0.9}
+                  key={item.id}
+                  onPress={() => LinkToDesc(item.contentType)}>
+                  <View>
+                    <ContentCard item={item}></ContentCard>
+                  </View>
+                </TouchableOpacity>
               );
             })}
           </View>
@@ -336,24 +355,5 @@ const ScreenA = ({navigation}) => {
     </View>
   );
 };
-export default ScreenA;
-{
-  /* <ScrollView>
-                <TextInput
-                  style={styles.input}
-                  placeholder="输入姓名"
-                  onChangeText={(value) => {
-                    setValue(value);
-                  }}
-                  keyboardType="phone-pad" //指定键盘类型;
-                  editable={true} //可编辑状态
-                ></TextInput>
-                <Text>tabA</Text>
-                <Text>杨磊</Text>
-                <Markdown style={styles} mergeStyle={true}>
-                  {copy}
-                </Markdown>
-                <Button title="gotoG" onPress={() => go()}></Button>
-                <Text h1>Recest</Text>
-              </ScrollView> */
-}
+export default TabScreenA;
+

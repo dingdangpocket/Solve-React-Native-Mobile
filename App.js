@@ -7,10 +7,15 @@ import TabScreenB from './android/app/src/pages/TabScreenB'; //引入
 import TabScreenC from './android/app/src/pages/TabScreenC'; //引入
 import ScreenG from './android/app/src/pages/ScreenG'; //引入
 import ScreenE from './android/app/src/pages/ScreenE'; //引入
+import TheoryDescScreen from './android/app/src/pages/desc/TheoryDescScreen'; //引入
+import ErrorDescScreen from './android/app/src/pages/desc/ErrorDescScreen'; //引入
+import ExampleDescScreen from './android/app/src/pages/desc/ExampleDescScreen'; //引入
+import QuestionDescScreen from './android/app/src/pages/desc/QuestionDescScreen'; //引入
 import {createStackNavigator} from '@react-navigation/stack'; //引入
 const Stack = createStackNavigator();
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
+
 function HomeTabs() {
   return (
     <Tab.Navigator
@@ -80,6 +85,10 @@ const App = () => {
           />
           <Stack.Screen name="Screen_G" component={ScreenG} />
           <Stack.Screen name="Screen_E" component={ScreenE} />
+          <Stack.Screen name="TheoryDescScreen" component={TheoryDescScreen} />
+          <Stack.Screen name="ErrorDescScreen" component={ErrorDescScreen} />
+          <Stack.Screen name="ExampleDescScreen" component={ExampleDescScreen} />
+          <Stack.Screen name="QuestionDescScreen" component={QuestionDescScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

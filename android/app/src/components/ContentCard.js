@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: MainWidth * 0.9,
     height: 155,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     marginTop: 10,
   },
   titleArea: {
