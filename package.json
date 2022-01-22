@@ -19,10 +19,12 @@
     "react-native-gesture-handler": "^2.1.1",
     "react-native-markdown-display": "^6.1.6",
     "react-native-markdown-renderer": "^3.2.8",
+    "react-native-pell-rich-editor": "^1.8.8",
     "react-native-reanimated": "^2.2.4",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-vector-icons": "^9.0.0",
+    "react-native-webview": "^11.17.0",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1"

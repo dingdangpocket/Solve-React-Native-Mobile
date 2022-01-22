@@ -79,7 +79,7 @@ const TheoryDescScreen = () => {
   return (
     <View>
       <ScrollView>
-        {/* <TextInput
+        <TextInput
           style={styles.input}
           placeholder="输入姓名"
           onChangeText={(value) => {
@@ -87,7 +87,7 @@ const TheoryDescScreen = () => {
           }}
           keyboardType="phone-pad" //指定键盘类型;
           editable={true} //可编辑状态
-        ></TextInput> */}
+        ></TextInput>
         <Text style={{fontSize:20}}>React性能优化方案</Text>
         <Text>作者:杨磊</Text>
         <Markdown style={styles} mergeStyle={true}>

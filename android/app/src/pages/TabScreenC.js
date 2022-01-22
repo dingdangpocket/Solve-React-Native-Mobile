@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack'; //引入
+import {WebView} from 'react-native-webview';
 const Stack = createStackNavigator();
 const ScreenC = ({navigation, route}) => {
   const {name, id} = route;
@@ -15,6 +16,11 @@ const ScreenC = ({navigation, route}) => {
   return (
     <View>
       <Text>tabC</Text>
+      <WebView
+        androidHardwareAccelerationDisabled
+        source={{uri:'https://baidu.com'}}
+        style={{width:100,height:100}}
+      />
       <Button title="gotoE" onPress={() => go()}></Button>
     </View>
   );

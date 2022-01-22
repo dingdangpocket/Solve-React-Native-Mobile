@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, StyleSheet,Text} from 'react-native';
-
+import {View, StyleSheet,Dimensions,Text} from 'react-native';
 const ErrorDescScreen = () => {
     return (
         <View>
@@ -8,7 +7,5 @@ const ErrorDescScreen = () => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({})
-
 export default ErrorDescScreen;
+const styles = StyleSheet.create({})
